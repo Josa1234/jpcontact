@@ -10,6 +10,59 @@
   </head>
   <body>
     <header>This is Header</header>
+
+    <form id="search-contacts">
+      <input
+        type="text"
+        name="q"
+        id="search-input"
+        placeholder="Seacrh Keyword"
+      />
+      <button type="submit">Search</button>
+    </form>
+    <form id="add-contact-form" method="POST">
+      <div>
+        <label for="fullName">Full Name</label>
+        <input
+          type="text"
+          name="fullName"
+          id="fullName"
+          placeholder="Billgates"
+          value="Billgates"
+        />
+      </div>
+      <div>
+        <label for="email">Email</label>
+        <input
+          type="email"
+          name="email"
+          id="email"
+          placeholder="billgates@billgates.com"
+          value="billgates@billgates.com"
+        />
+      </div>
+      <div>
+        <label for="phoneNumber">Phone Number</label>
+        <input
+          type="number"
+          name="phoneNumber"
+          id="phoneNumber"
+          placeholder="62838393932"
+          value="62838393932"
+        />
+      </div>
+      <div>
+        <label for="birthDay">Birthday</label>
+        <input
+          type="date"
+          name="birthDay"
+          id="birthDay"
+          placeholder="2022-08-23"
+          value="2022-08-23"
+        />
+      </div>
+      <button type="submit">Add Contact</button>
+    </form>
     <section>
       <ul id="contacts-container"></ul>
     </section>
