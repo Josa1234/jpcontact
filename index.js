@@ -1,7 +1,7 @@
 const contacts = [
   {
     id: 1,
-    fullname: "Josa Pratama",
+    fullName: "Josa Pratama",
     email: "josa@gmail.com",
     phoneNumber: "+6281293847592",
     label: ["owner"],
@@ -10,7 +10,7 @@ const contacts = [
   },
   {
     id: 2,
-    fullname: "Rafli Sadelon",
+    fullName: "Rafli Sadelon",
     email: "rafli@gmail.com",
     phoneNumber: "+6282192740493",
     label: ["friend"],
@@ -19,7 +19,7 @@ const contacts = [
   },
   {
     id: 3,
-    fullname: "M Rizky Marsezahanis",
+    fullName: "M Rizky Marsezahanis",
     email: "risky@gmail.com",
     phoneNumber: "+62839373829283",
     label: ["friend"],
@@ -28,15 +28,34 @@ const contacts = [
   },
 ];
 
-console.log(contacts, "This is JP Contact");
+const contactsContainerElement = document.getElementById("contacts-container");
 
-// for (contact of contacts) {
-//   for (person in contact) {
-//     console.log(`${person}: ${contact[person]}`);
-//   }
-// }
+function renderContacts() {
+  const contactItemElements = contacts.map(
+    (contact) => `
+<li>
+  <h2>${contact.fullName}</h2>
+  <p>${contact.email}</p>
+  <p>${contact.phoneNumber}</p>
+</li>
+`
+  );
 
-for (let i = 0; i < contacts.length; i++) {
-  const { id, fullname, email, phoneNumber, label } = contacts[i];
-  console.log(`${id}. ${fullname} ${email} (${phoneNumber}) ${label}`);
+  const contactItems = contactItemElements.join("");
+
+  contactsContainerElement.innerHTML = contactItems;
 }
+
+function addContact(fullName, email, phoneNumber) {
+  const lastId = contacts[contacts.length - 1].id;
+  contact.push({ id: lastId + 1, fullName, email, phoneNumber });
+  renderContacts();
+}
+
+function deleteContactById(id) {}
+
+function updateContactById(id) {}
+
+function searchContact(keyword) {}
+
+renderContacts();
