@@ -1,62 +1,38 @@
-let contacts = [
-  {
-    id: 1,
-    fullName: "Josa Pratama",
-    email: "josa@gmail.com",
-    phoneNumber: "+6281293847592",
-    label: ["owner"],
-    birthDay: "09/09/2006",
-    avatar: null,
-  },
-  {
-    id: 2,
-    fullName: "Rafli Sadelon",
-    email: "rafli@gmail.com",
-    phoneNumber: "+6282192740493",
-    label: ["friend"],
-    birthDay: "20/08/2008",
-    avatar: null,
-  },
-  {
-    id: 3,
-    fullName: "M Rizky Marsezahanis",
-    email: "risky@gmail.com",
-    phoneNumber: "+62839373829283",
-    label: ["friend"],
-    birthDay: "20/08/2008",
-    avatar: null,
-  },
-];
-
 const searchInputElement = document.getElementById("search-input");
-const addContactFormElement = document.getElementById("add-contact-form");
 const contactsContainerElement = document.getElementById("contacts-container");
 
+function searchContacts(contacts, keyword) {
+  searchInputElement.value = keyword;
+
+  const filteredContacts = contacts.filter((contact) =>
+    contact.fullName.toLowerCase().includes(keyword.toLowerCase())
+  );
+
+  return filteredContacts;
+}
+
 function renderContacts() {
+  const contacts = loadContactsFromLocalStorage();
   const queryString = window.location.search;
   const params = new URLSearchParams(queryString);
   const keyword = params.get("q");
 
-  if (keyword) {
-    searchInputElement.value = keyword;
+  const contactsToRender = keyword
+    ? searchContacts(contacts, keyword)
+    : contacts;
 
-    const filteredContacts = contacts.filter((contact) =>
-      contact.fullName.toLowerCase().includes(keyword.toLowerCase())
-    );
-
-    contacts = filteredContacts;
-  }
-
-  const contactItemElements = contacts.map(
+  const contactItemElements = contactsToRender.map(
     (contact) => `
-<li>
-  <h2>${contact.fullName}</h2>
-  <p>${contact.email}</p>
-  <p>${contact.phoneNumber}</p>
-  <p>${contact.birthDay}</p>
-  <div><button onclick="deleteContactById(${contact.id})">Delete</button></div>
-</li>
-`
+<tr>
+  <a href="#">
+    <td><a href="/contact/?id=${contact.id}" class="flex items-center"><img src="${contact.avatar}" alt="${contact.fullName}" class="w-12" /><span class="ml-4">${contact.fullName}</span></a></td>
+    <td>${contact.email}</td>
+    <td>${contact.phoneNumber}</td>
+    <td><span class="px-3 py-2 border-2 rounded-lg">${contact.label}<span></td>
+    <td>${contact.birthDay}</td>
+    </a>
+    </tr>
+    `
   );
 
   const contactItems = contactItemElements.join("");
@@ -64,32 +40,4 @@ function renderContacts() {
   contactsContainerElement.innerHTML = contactItems;
 }
 
-function addContact(event) {
-  event.preventDefault();
-  const lastId = contacts[contacts.length - 1].id;
-  const contactFormData = new FormData(addContactFormElement);
-  const newContact = {
-    id: lastId + 1,
-    fullName: contactFormData.get("fullName"),
-    email: contactFormData.get("email"),
-    phoneNumber: contactFormData.get("phoneNumber"),
-    birthDay: contactFormData.get("birthDay"),
-  };
-  contacts.push(newContact);
-  renderContacts();
-}
-
-function deleteContactById(id) {
-  const updatedContacts = contacts.filter(
-    (contact) => contact.id !== Number(id)
-  );
-  console.log(updatedContacts);
-  contacts = updatedContacts;
-  renderContacts();
-}
-
-function updateContactById(id) {}
-
 window.addEventListener("load", renderContacts);
-
-addContactFormElement.addEventListener("submit", addContact);

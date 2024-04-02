@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Add Contact</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  <body>
+    <div class="flex h-screen">
+      <nav class="flex-col w-1/5 bg-slate-900 text-white">
+        <div class="flex justify-center py-4">
+          <h2 class="text-2xl tracking-widest font-semibold">JP Contacts</h2>
+        </div>
+        <div class="flex mx-4">
+          <a
+            href="/contact/add.html"
+            class="px-8 py-3 mb-6 bg-gray-500 rounded-lg hover:bg-gray-700 flex items-center"
+          >
+            <img src="/img/plus.svg" alt="Add Contact" class="w-6" />
+            <p class="text-base pl-2">Add Contact</p>
+          </a>
+        </div>
+        <ul class="flex flex-col mx-4 pb-4">
+          <li
+            class="text-xl w-full cursor-pointer pl-4 hover:bg-white hover:text-black rounded-xl py-2"
+          >
+            <a href="/index.html">Contacts</a>
+          </li>
+          <li
+            class="text-xl w-full pl-4 cursor-pointer hover:bg-white hover:text-black rounded-xl py-2"
+          >
+            <a href="#">Trash</a>
+          </li>
+        </ul>
+        <div class="flex mx-4 justify-between px-4 items-center">
+          <h3 class="font-semibold text-xl">Label</h3>
+          <img src="/img/plus.svg" alt="Label" class="w-6 cursor-pointer" />
+        </div>
+      </nav>
+      <div class="w-full">
+        <header class="pt-2 pb-8 px-4 flex justify-between">
+          <div>
+            <form id="search-contacts">
+              <input
+                type="text"
+                name="q"
+                id="search-input"
+                placeholder="Seacrh Keyword"
+                class="py-3 px-3 border-2"
+              />
+              <button
+                type="submit"
+                class="py-3 px-8 bg-slate-500 rounded-lg ml-3 text-white"
+              >
+                Search
+              </button>
+            </form>
+          </div>
+          <div class="flex items-center">
+            <img src="/img/user.svg" alt="Josa Pratama" class="w-12 h-12" />
+            <h2 class="text-lg font-semibold ml-2">Josa Pratama</h2>
+          </div>
+        </header>
+
+        <main class="w-full px-4">
+          <div class="flex justify-center">
+            <form
+              id="add-contact-form"
+              method="POST"
+              class="w-1/2 bg-slate-700 py-8 rounded-xl"
+            >
+              <div class="w-full px-4 mb-8 flex justify-center">
+                <img src="/img/user.svg" alt="#" class="w-40 rounded-full" />
+              </div>
+              <div class="w-full px-4 mb-8">
+                <label for="fullName" class="text-base font-bold text-white">
+                  Full Name
+                </label>
+                <input
+                  type="text"
+                  name="fullName"
+                  id="fullName"
+                  placeholder="Full Name"
+                  class="w-full rounded-md p-3 focus:outline-none focus:ring-2 focus:ring-purple-200 focus:border-red-700"
+                />
+              </div>
+              <div class="w-full px-4 mb-8">
+                <label for="email" class="text-base font-bold text-white"
+                  >Email Address</label
+                >
+                <input
+                  type="email"
+                  name="email"
+                  id="email"
+                  placeholder="Email Address"
+                  class="w-full rounded-md p-3 focus:outline-none focus:ring-2 focus:ring-purple-200 focus:border-red-700"
+                />
+              </div>
+              <div class="w-full px-4 mb-8">
+                <label for="phoneNumber" class="text-base font-bold text-white"
+                  >Phone Number</label
+                >
+                <input
+                  type="number"
+                  name="phoneNumber"
+                  id="phoneNumber"
+                  placeholder="Phone Number"
+                  class="w-full rounded-md p-3 focus:outline-none focus:ring-2 focus:ring-purple-200 focus:border-red-700"
+                />
+              </div>
+              <div class="w-full px-4 mb-8">
+                <label for="birthDay" class="text-base font-bold text-white"
+                  >Birthday</label
+                >
+                <input
+                  type="date"
+                  name="birthDay"
+                  id="birthDay"
+                  class="w-full rounded-md p-3 focus:outline-none focus:ring-2 focus:ring-purple-200 focus:border-red-700"
+                />
+              </div>
+              <div class="flex justify-end">
+                <a
+                  href="/"
+                  class="px-8 py-3 bg-white text-black rounded-full hover:opacity-80 hover:shadow-lg transition duration-500"
+                >
+                  Back
+                </a>
+                <button
+                  type="submit"
+                  class="px-8 py-3 mx-3 bg-white text-black rounded-full hover:opacity-80 hover:shadow-lg transition duration-500"
+                >
+                  Save
+                </button>
+              </div>
+            </form>
+          </div>
+        </main>
+      </div>
+    </div>
+    <script src="/storage.js"></script>
+    <script src="/contact/index.js"></script>
+  </body>
+</html>

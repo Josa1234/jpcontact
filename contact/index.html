@@ -3,9 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>JP Contact</title>
-    <meta name="description" content="Customer Relationship Management" />
-    <meta name="author" content="Josa Pratama" />
+    <title>Contact Detail</title>
     <script src="https://cdn.tailwindcss.com"></script>
   </head>
   <body>
@@ -27,7 +25,7 @@
           <li
             class="text-xl w-full cursor-pointer pl-4 hover:bg-white hover:text-black rounded-xl py-2"
           >
-            <a href="/">Contacts</a>
+            <a href="/index.html">Contacts</a>
           </li>
           <li
             class="text-xl w-full pl-4 cursor-pointer hover:bg-white hover:text-black rounded-xl py-2"
@@ -66,23 +64,56 @@
         </header>
 
         <main class="w-full px-4">
-          <h2 class="text-3xl py-3 font-semibold">Contact <sub>(3)</sub></h2>
-          <table class="w-full text-left table-auto">
-            <thead class="border-b-2">
-              <th>Name</th>
-              <th>Email</th>
-              <th>Phone Number</th>
-              <th>Label</th>
-              <th>Birthday</th>
-            </thead>
-            <tbody id="contacts-container"></tbody>
-          </table>
+          <div class="flex justify-center">
+            <div class="w-1/2 bg-slate-700 py-6 rounded-xl">
+              <div class="flex items-center justify-between mb-10">
+                <a href="/">
+                  <img src="/img/back.svg" alt="Back" class="w-8 ml-10" />
+                </a>
+                <div class="flex items-center">
+                  <a
+                    class="px-8 py-3 bg-indigo-800 rounded-full text-white text-base hover:opacity-80"
+                    id="button-edit"
+                  >
+                    Edit
+                  </a>
+                  <button class="mr-10 ml-5" id="button-delete">
+                    <img src="/img/trash.svg" alt="Trash" class="w-8" />
+                  </button>
+                </div>
+              </div>
+              <div id="contact-container" class="py-10">
+                <div class="flex items-center flex-col">
+                  <img src="/img/user.svg" alt="#" class="w-40 rounded-full" />
+                  <h2
+                    class="font-semibold text-4xl text-white p-6"
+                    id="full-name"
+                  ></h2>
+                </div>
+                <div class="mx-32 p-10 bg-white rounded-xl">
+                  <h1 class="text-center font-semibold text-2xl mb-10">
+                    Contact Detail
+                  </h1>
+                  <div class="flex items-center mb-4">
+                    <img src="/img/email.svg" alt="" class="w-8" />
+                    <p class="pl-4 text-xl" id="email"></p>
+                  </div>
+                  <div class="flex items-center mb-4">
+                    <img src="/img/phone.svg" alt="" class="w-8" />
+                    <p class="pl-4 text-xl" id="number-phone"></p>
+                  </div>
+                  <div class="flex items-center mb-4">
+                    <img src="/img/birthday.svg" alt="" class="w-8" />
+                    <p class="pl-4 text-xl" id="birth-day"></p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </main>
-
-        <section></section>
       </div>
     </div>
-    <script src="storage.js"></script>
-    <script src="index.js"></script>
+    <script src="/storage.js"></script>
+    <script src="/contact/index.js"></script>
   </body>
 </html>
